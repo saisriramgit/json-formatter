@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Formatter Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "neutral-900": "#171717",
+              "neutral-800": "#262626",
+              "neutral-700": "#404040",
+              "neutral-600": "#525252",
+              "neutral-500": "#737373",
+              "neutral-400": "#a3a3a3",
+              "neutral-300": "#d4d4d4",
+              "custom-yellow": "#ff0",
+              "red-400": "#f87171",
+              "green-400": "#4ade80",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-neutral-800 p-2 sm:p-0">
+    <div
+      id="app"
+      class="bg-neutral-800 p-6 rounded-lg shadow-lg border border-neutral-700 max-w-2xl mx-auto mt-0 sm:mt-4"
+    >
+      <h3 class="text-xl font-semibold text-white mb-3">
+        JSON Formatter & Validator
+      </h3>
+      <p class="text-neutral-400 text-sm mb-4">
+        Paste your JSON below to format it and check for validity.
+      </p>
+      <div class="space-y-4">
+        <div>
+          <label
+            for="jsonInput"
+            class="block text-sm font-medium text-neutral-300 mb-1"
+            >JSON Input:</label
+          >
+          <textarea
+            id="jsonInput"
+            rows="8"
+            class="block w-full bg-neutral-700 border-transparent rounded-md p-3 text-white placeholder-neutral-500 focus:ring-custom-yellow focus:border-custom-yellow sm:text-sm font-mono"
+            placeholder='{"name": "Astro", "isAwesome": true, "features": ["Islands", "SSR"]}'
+            spellcheck="false"
+          ></textarea>
+          <div id="validationStatus" class="mt-1 text-xs h-4"></div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button
+            id="formatJsonBtn"
+            class="py-2 px-4 bg-custom-yellow text-neutral-900 font-medium rounded-md text-sm hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-800 focus:ring-custom-yellow"
+          >
+            Format JSON
+          </button>
+          <button
+            id="clearJsonBtn"
+            class="py-2 px-4 bg-neutral-600 text-white font-medium rounded-md text-sm hover:bg-neutral-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-800 focus:ring-neutral-500"
+          >
+            Clear
+          </button>
+        </div>
+        <div>
+          <label
+            for="jsonOutput"
+            class="block text-sm font-medium text-neutral-300 mb-1"
+            >Formatted Output:</label
+          >
+          <textarea
+            id="jsonOutput"
+            rows="10"
+            readonly
+            class="block w-full bg-neutral-700 border-transparent rounded-md p-3 text-white placeholder-neutral-500 sm:text-sm font-mono cursor-not-allowed"
+            placeholder="Formatted JSON will appear here..."
+            spellcheck="false"
+          ></textarea>
+          <button
+            id="copyJsonOutputBtn"
+            class="mt-2 py-1 px-3 bg-neutral-600 text-white font-medium rounded-md text-xs hover:bg-neutral-500 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-offset-neutral-800 focus:ring-neutral-500"
+          >
+            Copy Output
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
